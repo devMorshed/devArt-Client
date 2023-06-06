@@ -1,4 +1,4 @@
-##Main Pages
+## Main Pages
 1. Home 
 2. Log In
 3. Sign Up
@@ -10,6 +10,9 @@
 
 
 
-###Navigation Bar
+### Navigation Bar
 it will contain navmenus, 
 --- Logo------ Home - Instructors - Classes ----- Dashboard - DP---
+
+
+- Dark Mode enabled . 
