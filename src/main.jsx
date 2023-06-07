@@ -4,9 +4,14 @@ import "./index.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/Routes";
+import AuthProvider from "./providers/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<ThemeProvider>
-		<RouterProvider router={router}></RouterProvider>
-	</ThemeProvider>
+	<AuthProvider>
+		<ThemeProvider>
+			<Toaster />
+			<RouterProvider router={router}></RouterProvider>
+		</ThemeProvider>
+	</AuthProvider>
 );

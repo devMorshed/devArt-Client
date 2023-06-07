@@ -13,12 +13,15 @@ const MainLayout = () => {
 
 	return (
 		<div
-			className={`relative min-h-screen max-w-7xl mx-auto  ${
+			className={`relative flex flex-col min-h-screen max-w-7xl mx-auto  ${
 				darken && "dark"
-        }`}>
-      
+			}`}>
 			<NavBar />
-			<Outlet />
+
+			<div className="grow">
+				<Outlet />
+			</div>
+
 			<Footer />
 
 			{/* Dark Moded Toggler */}
