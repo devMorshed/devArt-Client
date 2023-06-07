@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Input, Typography } from "@material-tailwind/react";
-import login from "../../assets/login.svg";
+import login from "../../assets/signup.svg";
 import BTN from "../../components/Shared/BTN";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -10,7 +10,13 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 const Signup = () => {
-	const { setLoading, signIn, signInWithGoogle, loading } = useAuth();
+	const {
+		setLoading,
+		createUser,
+		updateUserProfile,
+		signInWithGoogle,
+		loading,
+	} = useAuth();
 	const [showPass, setShowPass] = useState(false);
 	const [showConfirmPass, setShowConfirmPass] = useState(false);
 	const [error, setError] = useState("");
@@ -39,9 +45,21 @@ const Signup = () => {
 		return true;
 	};
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+	const onSubmit = ({ name, email, password, photo }) => {
+		createUser(email, password)
+			.then((data) => {
+				console.log(data);
+				updateUserProfile(name, photo)
+					.then((data) => {
+						console.log(data);
+						toast.success("Signup Successfull");
+						setLoading(false);
+						navigate(destination);
+					})
+					.catch((err) => setError(err.message));
+			})
+			.catch((err) => setError(err.message));
+	};
 
 	const handleGoogle = () => {
 		setLoading(false);
@@ -57,9 +75,9 @@ const Signup = () => {
 	};
 
 	return (
-		<div className=" min-h-[calc(100vh-64px-410px)] md:h-[calc(100vh-64px-302px)] flex justify-center  p-10 dark:bg-gray-300">
+		<div className="min-h-[calc(100vh-64px-410px)] md:min-h-[calc(100vh-64px-302px)] flex justify-center p-10  pt-20 dark:bg-gray-300">
 			<div className="flex lg:gap-20 items-center justify-around ">
-				<div className="hidden lg:block border max-w-lg ">
+				<div className="hidden lg:block  ">
 					<img src={login} alt="" />
 				</div>
 
@@ -92,7 +110,7 @@ const Signup = () => {
 
 							<div>
 								<Input
-									{...register("mail", {
+									{...register("email", {
 										required: "Email Address is required",
 										pattern: {
 											value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -102,12 +120,12 @@ const Signup = () => {
 									size="lg"
 									label="Email"
 									aria-invalid={
-										errors.mail ? "true" : "false"
+										errors.email ? "true" : "false"
 									}
 								/>
-								{errors.mail && (
+								{errors.email && (
 									<p className="text-red-700" role="alert">
-										{errors.mail.message}
+										{errors.email.message}
 									</p>
 								)}
 							</div>

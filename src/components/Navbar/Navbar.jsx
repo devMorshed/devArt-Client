@@ -15,7 +15,7 @@ const Navbar = () => {
 
 
 	return (
-		<nav className="flex sticky top-0 bg-orange-50  justify-between items-center py-2 shadow-md px-4">
+		<nav className="flex z-10 sticky top-0 bg-orange-50  justify-between items-center py-2 shadow-md px-4">
 			{/* Logo part  */}
 			<div className="">
 				<Link to={"/"}>

@@ -51,9 +51,9 @@ const Login = () => {
 	};
 
 	return (
-		<div className=" h-[calc(100vh-64px-410px)] md:h-[calc(100vh-64px-302px)] flex justify-center  p-10 dark:bg-gray-300">
+		<div className=" h-[calc(100vh-64px-410px)] md:min-h-[calc(100vh-64px-302px)] flex justify-center  p-10 py-20 dark:bg-gray-300">
 			<div className="flex lg:gap-20 items-center justify-around ">
-				<div className="hidden lg:block border max-w-lg ">
+				<div className="hidden lg:block">
 					<img src={login} alt="" />
 				</div>
 

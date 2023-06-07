@@ -25,22 +25,23 @@ const MainLayout = () => {
 			<Footer />
 
 			{/* Dark Moded Toggler */}
-			<div className="absolute bottom-10 right-10 rounded-full border p-4 bg-gray-800 dark:bg-gray-200">
-				<label htmlFor="darkenTheme">
-					<input
-						type="checkbox"
-						id="darkenTheme"
-						hidden
-						size={20}
-						checked={darken}
-						onChange={handleDarken}
-					/>
-					{darken ? (
-						<BsMoonStarsFill size={20} />
-					) : (
-						<FiSun size={20} color="white" />
-					)}
-				</label>
+			<div className="sticky bottom-0">
+				<div className=" absolute bottom-10 right-10  w-fit p-4 rounded-full border  bg-gray-800 dark:bg-gray-200">
+					<label htmlFor="darkenTheme">
+						<input
+							type="checkbox"
+							id="darkenTheme"
+							hidden
+							checked={darken}
+							onChange={handleDarken}
+						/>
+						{darken ? (
+							<BsMoonStarsFill size={20} />
+						) : (
+							<FiSun size={20} color="white" />
+						)}
+					</label>
+				</div>
 			</div>
 		</div>
 	);
