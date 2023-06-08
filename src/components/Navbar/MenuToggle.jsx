@@ -6,7 +6,6 @@ import { ImSpinner3 } from "react-icons/im";
 
 const MenuToggle = () => {
 	const { user, loading } = useAuth();
-	console.log(loading);
 	return (
 		<Menu>
 			<MenuHandler>

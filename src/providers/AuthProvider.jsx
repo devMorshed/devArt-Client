@@ -10,6 +10,7 @@ import {
 	updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/Firebase";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -48,7 +49,15 @@ const AuthProvider = ({ children }) => {
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			setUser(currentUser);
+      setUser(currentUser);
+      if (currentUser) {
+			// Setting current user to database
+			axios.post(`/user/${currentUser?.email}`, {
+				name: currentUser.displayName,
+				email: currentUser.email,
+				role: "student",
+			});
+		}
 			setLoading(false);
 		});
 		return () => {
