@@ -1,51 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
 import SectionHead from "../../../components/Shared/SectionHead";
 import InstructorCard from "../../Instructors/InstructorCard";
+import axios from "axios";
 
 const PopularInstructors = () => {
-	const data = [
-		{
-			id: 1,
-			name: "Morshed",
-			email: "demo@com",
-			image: "https://i.ibb.co/MR8VCTz/chef2.jpg",
-			ratings: 4.5,
-		},
-		{
-			id: 2,
-			name: "Morshed",
-			email: "demo@com",
-			image: "https://i.ibb.co/MR8VCTz/chef2.jpg",
-			ratings: 4.5,
-		},
-		{
-			id: 3,
-			name: "Morshed",
-			email: "demo@com",
-			image: "https://i.ibb.co/MR8VCTz/chef2.jpg",
-			ratings: 4.5,
-		},
-		{
-			id: 4,
-			name: "Morshed",
-			email: "demo@com",
-			image: "https://i.ibb.co/MR8VCTz/chef2.jpg",
-			ratings: 4.5,
-		},
-		{
-			id: 5,
-			name: "Morshed",
-			email: "demo@com",
-			image: "https://i.ibb.co/MR8VCTz/chef2.jpg",
-			ratings: 4.5,
-		},
-		{
-			id: 6,
-			name: "Morshed",
-			email: "demo@com",
-			image: "https://i.ibb.co/MR8VCTz/chef2.jpg",
-			ratings: 4.5,
-		},
-	];
+
+	const { data } = useQuery(["popularInstructors"], async () => {
+		const res = await axios.get("/popularinstructors");
+		return res.data;
+  });
+  
 	return (
 		<section className="my-10 dark:bg-gray-800 dark:text-gray-50">
 			<SectionHead
