@@ -2,20 +2,17 @@ import { Link, NavLink } from "react-router-dom";
 import BTN from "../Shared/BTN";
 import MenuItems from "./MenuItems";
 import MenuToggle from "./MenuToggle";
+import useAuth from "../../hooks/useAuth";
+import { ImSpinner3 } from "react-icons/im";
 
 const Navbar = () => {
 	// ##TODO Have to make logo
 	// ##TODO Have to active style nav items
 
-	const user = "user";
-	// const user = false;
-	const isLoading = false;
-	// const isLoading = true;
-
-
+	const { user, loading } = useAuth();
 
 	return (
-		<nav className="flex z-10 sticky top-0 bg-orange-50  justify-between items-center py-2 shadow-md px-4">
+		<nav className="flex z-50 sticky top-0 bg-orange-50  justify-between items-center py-2 shadow-md px-4">
 			{/* Logo part  */}
 			<div className="">
 				<Link to={"/"}>
@@ -32,8 +29,13 @@ const Navbar = () => {
 
 			{/* dashboad and profile picture conditional  */}
 			<div className="flex justify-end gap-4">
-				{isLoading ? (
-					<div>Loading</div>
+				{loading ? (
+					<div className="   md:flex items-center gap-4">
+						<div className="w-20 h-12 hidden md:block animate-ping bg-blue-gray-50"></div>
+            <div className=" h-12 w-12 flex justify-center items-center">
+              <ImSpinner3 size={20} />
+            </div>
+					</div>
 				) : user ? (
 					<div className="flex items-center gap-4">
 						<NavLink

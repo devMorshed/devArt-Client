@@ -13,12 +13,12 @@ const MainLayout = () => {
 
 	return (
 		<div
-			className={`relative flex flex-col min-h-screen max-w-7xl mx-auto  ${
+			className={`  ${
 				darken && "dark"
-			}`}>
+			} relative flex flex-col min-h-screen max-w-7xl mx-auto`}>
 			<NavBar />
 
-			<div className="grow">
+			<div className="grow dark:bg-gray-800 dark:text-gray-50">
 				<Outlet />
 			</div>
 
