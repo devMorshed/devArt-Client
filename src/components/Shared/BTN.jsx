@@ -10,4 +10,4 @@ const BTN = ({ children, type = "button", cclass }) => {
 	);
 };
 
-export default BTN;
+export default BTN ;

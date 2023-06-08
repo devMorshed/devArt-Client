@@ -1,5 +1,16 @@
+import BTN from "../../components/Shared/BTN";
+import useAuth from "../../hooks/useAuth";
+
 const Profile = () => {
-	return <div>this is profile</div>;
+  const { user, logOut } = useAuth();
+  
+	return (
+		<div>
+			<div onClick={logOut}>
+				<BTN>Log Out</BTN>
+			</div>
+		</div>
+	);
 };
 
 export default Profile;

@@ -14,7 +14,7 @@ module.exports = {
 		"react/prop-types": [
 			"error",
 			{
-				ignore: ["children"],
+				ignore: ["children", 'type', 'cclass'],
 			},
 		],
 	},
