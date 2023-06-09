@@ -17,8 +17,8 @@ const Instructors = () => {
 				subheading={"Choose form our Favorite Instructors"}
 			/>
 			<div className="my-10 grid px-6 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-center items-center">
-				{data?.map((instructor) => (
-					<ClassCard key={instructor.id} data={instructor} />
+				{data?.map((item) => (
+					<ClassCard key={item._id} data={item} />
 				))}
 			</div>
 		</section>

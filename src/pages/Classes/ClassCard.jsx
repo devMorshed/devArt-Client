@@ -15,13 +15,14 @@ import {
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function ClassCard({ data }) {
 	// const isInstructor = true;
 	const isInstructor = false;
 	// const isAdmin = true;
-  const isAdmin = false;
-  // const user = false;
+	const isAdmin = false;
+	// const user = false;
 	const navigate = useNavigate();
 
 	const { user } = useAuth();
@@ -35,9 +36,21 @@ export default function ClassCard({ data }) {
 				name,
 				price: parseFloat(price),
 				email: user.email,
-			};
-
-			console.log(selectedClass);
+				addedtime: new Date().getTime(),
+      };
+      
+			axios.post(`/cart/${user.email}`, selectedClass).then((res) => {
+				console.log(res.data);
+				if (res.data.acknowledged) {
+					Swal.fire({
+						position: "center",
+						icon: "success",
+						title: `${name} added to cart`,
+						showConfirmButton: false,
+						timer: 1200,
+					});
+				}
+			});
 		} else {
 			Swal.fire({
 				title: "You Have To Log In First",

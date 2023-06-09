@@ -18,7 +18,7 @@ const Instructors = () => {
 			/>
 			<div className="my-10 grid px-6 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-center items-center">
 				{data?.map((instructor) => (
-					<InstructorCard key={instructor.id} data={instructor} />
+					<InstructorCard key={instructor._id} data={instructor} />
 				))}
 			</div>
 		</section>

@@ -18,7 +18,7 @@ const PopularClassess = () => {
 
 			<div className="my-10 grid px-6 md:grid-cols-2 xl:grid-cols-3 gap-10 justify-center items-center">
 				{data?.map((course) => (
-					<ClassCard key={course.name} data={course} />
+					<ClassCard key={course._id} data={course} />
 				))}
 			</div>
 		</section>
