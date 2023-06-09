@@ -36,8 +36,8 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const logOut = () => {
-    setLoading(true);
-    
+		setLoading(true);
+
 		return signOut(auth);
 	};
 
@@ -50,22 +50,34 @@ const AuthProvider = ({ children }) => {
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      if (currentUser) {
-			// Setting current user to database
-			axios.post(`/user/${currentUser?.email}`, {
-				name: currentUser.displayName,
-				email: currentUser.email,
-				role: "student",
-			});
-		}
+			setUser(currentUser);
+
+			if (currentUser) {
+				// Setting current user to database
+				axios.post(`/user/${currentUser?.email}`, {
+					name: currentUser.displayName,
+					email: currentUser.email,
+					role: "student",
+				});
+				// storing user JWT token
+				axios
+					.post("/jwt", {
+						name: currentUser.displayName,
+						email: currentUser.email,
+					})
+					.then((data) => {
+						localStorage.setItem("access_token", data.data);
+					});
+			} else {
+				localStorage.removeItem("access_token");
+			}
+
 			setLoading(false);
 		});
 		return () => {
 			return unsubscribe();
 		};
-  }, []);
-  
+	}, []);
 
 	const authInfo = {
 		user,

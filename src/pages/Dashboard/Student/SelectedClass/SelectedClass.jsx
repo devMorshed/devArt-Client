@@ -68,7 +68,7 @@ const SelectedClass = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{cart.map(({ _id, name, price, addedtime }, index) => (
+						{cart?.map(({ _id, name, price, addedtime }, index) => (
 							<tr key={_id} className="even:bg-blue-gray-50/50">
 								<td className="p-4">
 									<Typography
