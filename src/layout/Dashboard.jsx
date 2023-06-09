@@ -32,7 +32,7 @@ const Dashboard = () => {
 	console.log(navItems);
 
 	return (
-		<div className="flex">
+		<div className="flex min-h-[calc(100vh-64px-410px)] md:min-h-[calc(100vh-64px-302px)] bg-gray-100">
 			<SideBar navItems={navItems} />
 			<Outlet />
 		</div>
