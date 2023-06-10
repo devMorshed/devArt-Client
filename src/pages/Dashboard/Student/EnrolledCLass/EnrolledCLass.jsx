@@ -3,7 +3,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import SectionHead from "../../../../components/Shared/SectionHead";
 import {
-  Button,
+	Button,
 	Card,
 	CardBody,
 	CardFooter,
@@ -35,7 +35,9 @@ const EnrolledCLass = () => {
 				/>
 				<div className="my-10 grid px-6 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-center items-center">
 					{data?.map(({ _id, image, name }) => (
-						<Card key={_id}>
+						<Card
+							className="dark:bg-gray-600 dark:text-gray-50"
+							key={_id}>
 							<CardHeader floated={false} color="blue-gray">
 								<img
 									className="h-60 w-full"
@@ -48,23 +50,19 @@ const EnrolledCLass = () => {
 								<div className="mb-3 flex gap-3 items-center justify-between">
 									<Typography
 										variant="h5"
-										color="blue-gray"
 										className="font-medium">
 										{name}
 									</Typography>
 								</div>
-								<Typography color="gray">
+								<Typography>
 									Enter a freshly updated and thoughtfully
 									furnished peaceful home surrounded by
 									ancient trees, stone walls, and open
 									meadows.
 								</Typography>
-								
 							</CardBody>
 							<CardFooter className="pt-2">
-								<Button
-									size="lg"
-									fullWidth={true}>
+								<Button size="lg" fullWidth={true}>
 									View Class
 								</Button>
 

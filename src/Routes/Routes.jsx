@@ -17,6 +17,7 @@ import AdminRoute from "./AdminRoute";
 import ManageClass from "../pages/Dashboard/Admin/MangeClass/ManageClass";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser/ManageUser";
 import Profile from "../pages/Dashboard/Profile";
+import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
 	{
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
 					{
 						path: "payment/:id",
 						element: <Payment />,
+					},
+					{
+						path: "payment-history",
+						element: <PaymentHistory />,
 					},
 					{
 						path: "selected",

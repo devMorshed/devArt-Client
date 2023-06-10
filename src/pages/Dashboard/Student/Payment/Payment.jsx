@@ -28,6 +28,7 @@ const Payment = () => {
 			<div className=" ">
 				<Elements stripe={stripePromise}>
 					<CheckoutForm
+						name={name}
 						cartID={cartID}
 						classID={classID}
 						price={price}></CheckoutForm>

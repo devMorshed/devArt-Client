@@ -21,6 +21,10 @@ const Dashboard = () => {
 				to: "enrolled",
 				lable: "Enrolled Class",
 			},
+			{
+				to: "payment-history",
+				lable: "Payment History",
+			},
 		];
 	}
 
@@ -31,7 +35,7 @@ const Dashboard = () => {
 			<div className="absolute top-1/2 left-0 bg-transparent">
 				<SideBar navItems={navItems} />
 			</div>
-			<div className="pl-48 w-full">
+			<div className="pl-48 w-full dark:text-gray-50 dark:bg-gray-800">
 				<Outlet />
 			</div>
 		</div>

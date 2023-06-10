@@ -8,7 +8,7 @@ export default function SideBar({ navItems }) {
 			<div className="flex flex-col">
 				{navItems?.map((nav) => (
 					<NavLink
-						className={"px-8 py-2 rounded hover:bg-gray-200"}
+						className={"px-8 py-2 rounded dark:hover:text-gray-800 hover:bg-gray-200"}
 						to={`/dashboard/${nav.to}`}
 						key={nav.to}>
 						{nav.lable}

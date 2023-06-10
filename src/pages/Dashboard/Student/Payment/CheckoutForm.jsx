@@ -7,7 +7,7 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, classID, cartID }) => {
+const CheckoutForm = ({ price, name, classID, cartID }) => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const [cardError, setCardError] = useState();
@@ -79,6 +79,7 @@ const CheckoutForm = ({ price, classID, cartID }) => {
 				email: user?.email,
 				transactionId: paymentIntent.id,
 				price,
+				name,
 				cartID,
 				classID,
 				paymentDate: new Date(),
