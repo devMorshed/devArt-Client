@@ -4,13 +4,15 @@ import axios from "axios";
 
 import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { Link, NavLink } from "react-router-dom";
+import BTN from "../../../../components/Shared/BTN";
 
 const SelectedClass = () => {
 	const [cart, refetch, isLoading] = useCart();
+	const [axiosSecure] = useAxiosSecure();
 
 	const TABLE_HEAD = ["Name", "Added", "Price", "", ""];
-
-	console.log(cart);
 
 	const handleDelete = (id) => {
 		Swal.fire({
@@ -23,7 +25,7 @@ const SelectedClass = () => {
 			confirmButtonText: "Yes, delete it!",
 		}).then((result) => {
 			if (result.isConfirmed) {
-				axios.delete(`/cart/${id}`).then((data) => {
+				axiosSecure.delete(`/cart/${id}`).then((data) => {
 					console.log(data.data);
 					refetch();
 					if (data.data.deletedCount === 1) {
@@ -38,8 +40,7 @@ const SelectedClass = () => {
 		});
 	};
 
-
-  // todo need proper loader 
+	// todo need proper loader
 
 	if (isLoading) {
 		return <div>Loading</div>;
@@ -68,7 +69,7 @@ const SelectedClass = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{cart?.map(({ _id, name, price, addedtime }, index) => (
+						{cart?.map(({ _id, name, price, addedtime, image }, index) => (
 							<tr key={_id} className="even:bg-blue-gray-50/50">
 								<td className="p-4">
 									<Typography
@@ -103,14 +104,11 @@ const SelectedClass = () => {
 									</button>
 								</td>
 								<td className="p-4">
-									<Typography
-										as="a"
-										href="#"
-										variant="small"
-										color="blue"
-										className="font-medium">
-										Pay
-									</Typography>
+									<Link
+										state={{name, price, image, _id}}
+										to={`/dashboard/payment/${_id}`}>
+										<BTN>Pay</BTN>
+									</Link>
 								</td>
 							</tr>
 						))}

@@ -37,8 +37,9 @@ export default function ClassCard({ data }) {
 				price: parseFloat(price),
 				email: user.email,
 				addedtime: new Date().getTime(),
-      };
-      
+				status: "seleccted",
+			};
+
 			axios.post(`/cart/${user.email}`, selectedClass).then((res) => {
 				console.log(res.data);
 				if (res.data.acknowledged) {
@@ -125,7 +126,15 @@ export default function ClassCard({ data }) {
 				</div>
 			</CardBody>
 			<CardFooter className="pt-2">
-				{seats <= 0 || isAdmin || isInstructor ? (
+				<Button
+					onClick={selectClass}
+					disabled={isAdmin || isInstructor}
+					size="lg"
+					fullWidth={true}>
+					Select
+				</Button>
+
+				{/* {seats <= 0 || isAdmin || isInstructor ? (
 					<Button disabled size="lg" fullWidth={true}>
 						Select
 					</Button>
@@ -133,7 +142,7 @@ export default function ClassCard({ data }) {
 					<Button onClick={selectClass} size="lg" fullWidth={true}>
 						Select
 					</Button>
-				)}
+				)} */}
 			</CardFooter>
 		</Card>
 	);

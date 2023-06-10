@@ -9,7 +9,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../layout/Dashboard";
 import SelectedClass from "../pages/Dashboard/Student/SelectedClass/SelectedClass";
 import EnrolledCLass from "../pages/Dashboard/Student/EnrolledCLass/EnrolledCLass";
-import Payment from "../pages/Dashboard/Student/Payment";
+import Payment from "../pages/Dashboard/Student/Payment/Payment";
 import InstructorRoute from "./InstructorRoute";
 import Myclass from "../pages/Dashboard/Instructor/Myclass/Myclass";
 import Addclass from "../pages/Dashboard/Instructor/Addclass/Addclass";
@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
 						element: <Profile />,
 					},
 					{
-						path: "payment",
+						path: "payment/:id",
 						element: <Payment />,
 					},
 					{

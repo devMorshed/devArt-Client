@@ -16,18 +16,13 @@ const Dashboard = () => {
 				to: "selected",
 				lable: "Selected Class",
 			},
-			{
-				to: "payment",
-				lable: "Payment",
-			},
+
 			{
 				to: "enrolled",
 				lable: "Enrolled Class",
 			},
 		];
 	}
-
-  
 
 	console.log(navItems);
 
