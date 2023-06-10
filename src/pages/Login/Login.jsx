@@ -9,7 +9,6 @@ import { FaPlaneDeparture } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
-import useStudent from "../../hooks/useStudent";
 const Login = () => {
 	const { setLoading, signIn, signInWithGoogle, loading } = useAuth();
 	const [showPass, setShowPass] = useState(false);
@@ -17,7 +16,6 @@ const Login = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const [isStudent, isStudentLoading, studentRefeatch] = useStudent();
 	const destination = location.state?.from?.pathname || "/";
 
 	const {
@@ -30,7 +28,6 @@ const Login = () => {
 		signIn(mail, password)
 			.then((data) => {
 				console.log(data);
-				studentRefeatch();
 				toast.success("Sign In Successfull");
 				navigate(destination);
 				setLoading(false);
@@ -45,7 +42,6 @@ const Login = () => {
 		setLoading(false);
 		signInWithGoogle()
 			.then(() => {
-				studentRefeatch();
 				toast.success("Sign In Successfull");
 				navigate(destination);
 			})
