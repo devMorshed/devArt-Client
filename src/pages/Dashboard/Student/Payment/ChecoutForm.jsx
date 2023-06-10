@@ -4,6 +4,8 @@ import { Card } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const ChecoutForm = ({ price, classID }) => {
 	const stripe = useStripe();
@@ -11,9 +13,9 @@ const ChecoutForm = ({ price, classID }) => {
 	const [cardError, setCardError] = useState();
 	const [axiosSecure] = useAxiosSecure();
 	const [clientSecret, setClientSecret] = useState();
-	const [processing, setProcessing] = useState();
+	const [processing, setProcessing] = useState(false);
 	const [transactionId, setTransactionId] = useState("");
-
+	const navigate = useNavigate();
 	const { user } = useAuth();
 
 	useEffect(() => {
@@ -50,6 +52,8 @@ const ChecoutForm = ({ price, classID }) => {
 			console.log("[PaymentMethod]", paymentMethod);
 		}
 
+		setProcessing(true);
+
 		const { paymentIntent, error: confirmError } =
 			await stripe.confirmCardPayment(clientSecret, {
 				payment_method: {
@@ -66,7 +70,9 @@ const ChecoutForm = ({ price, classID }) => {
 		}
 
 		console.log("payment intent", paymentIntent);
+
 		setProcessing(false);
+
 		if (paymentIntent.status === "succeeded") {
 			setTransactionId(paymentIntent.id);
 			// save payment information to the server
@@ -79,15 +85,21 @@ const ChecoutForm = ({ price, classID }) => {
 			};
 			axiosSecure.post("/payments", payment).then((res) => {
 				console.log(res.data);
-				// if (res.data.insertedId) {
-				// 	console.log("Confirmed");
-				// }
+				if (res.data.insertResult.insertedId) {
+					Swal.fire({
+						position: "center",
+						icon: "success",
+						title: "Paymnent Successfull",
+						showConfirmButton: false,
+						timer: 1200,
+					});
+					navigate("/dashboard/selected");
+				}
 			});
 		}
 	};
 
-
-  console.log(classID);
+	console.log(classID);
 	return (
 		<Card className="p-10">
 			<form onSubmit={handleSubmit}>
@@ -110,12 +122,6 @@ const ChecoutForm = ({ price, classID }) => {
 				{cardError && (
 					<p className="text-center my-4 text-orange-900">
 						{cardError}
-					</p>
-				)}
-
-				{transactionId && (
-					<p className="text-green-500">
-						Transaction complete with transactionId: {transactionId}
 					</p>
 				)}
 

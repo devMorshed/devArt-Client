@@ -9,9 +9,8 @@ const Payment = () => {
 	const location = useLocation();
 	const {name, image, price, _id:classID} = location.state;
 
-	const stripePromise = loadStripe(import.meta.env.VITE_PK);
-
-	 
+  const stripePromise = loadStripe(import.meta.env.VITE_PK);
+  
 	return (
 		<div className="w-full p-6 flex items-center flex-col my-10 md:flex-row gap-10">
 			<div className="md:w-1/2">

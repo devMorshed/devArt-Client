@@ -37,7 +37,7 @@ export default function ClassCard({ data }) {
 				price: parseFloat(price),
 				email: user.email,
 				addedtime: new Date().getTime(),
-				status: "seleccted",
+				status: "selected",
 			};
 
 			axios.post(`/cart/${user.email}`, selectedClass).then((res) => {

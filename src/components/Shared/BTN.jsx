@@ -1,13 +1,14 @@
 import { Button } from "@material-tailwind/react";
 
-const BTN = ({ children, type = "button", cclass }) => {
+const BTN = ({ children, type = "button", cclass, disabled }) => {
 	return (
 		<Button
-      type={type}
-      className={`bg-orange-400 text-gray-800 dark:bg-orange-700 dark:text-gray-100 ${cclass}`}>
+			disabled={disabled}
+			type={type}
+			className={`bg-orange-400 text-gray-800 dark:bg-orange-700 dark:text-gray-100 ${cclass}`}>
 			{children}
 		</Button>
 	);
 };
 
-export default BTN ;
+export default BTN;
