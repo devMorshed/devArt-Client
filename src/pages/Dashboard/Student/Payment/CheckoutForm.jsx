@@ -7,7 +7,7 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const ChecoutForm = ({ price, classID }) => {
+const CheckoutForm = ({ price, classID, cartID }) => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const [cardError, setCardError] = useState();
@@ -75,11 +75,11 @@ const ChecoutForm = ({ price, classID }) => {
 
 		if (paymentIntent.status === "succeeded") {
 			setTransactionId(paymentIntent.id);
-			// save payment information to the server
 			const payment = {
 				email: user?.email,
 				transactionId: paymentIntent.id,
 				price,
+				cartID,
 				classID,
 				paymentDate: new Date(),
 			};
@@ -93,13 +93,12 @@ const ChecoutForm = ({ price, classID }) => {
 						showConfirmButton: false,
 						timer: 1200,
 					});
-					navigate("/dashboard/selected");
+					navigate("/dashboard/enrolled");
 				}
 			});
 		}
 	};
 
-	console.log(classID);
 	return (
 		<Card className="p-10">
 			<form onSubmit={handleSubmit}>
@@ -136,4 +135,4 @@ const ChecoutForm = ({ price, classID }) => {
 	);
 };
 
-export default ChecoutForm;
+export default CheckoutForm;

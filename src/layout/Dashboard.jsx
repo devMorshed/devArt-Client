@@ -27,9 +27,13 @@ const Dashboard = () => {
 	console.log(navItems);
 
 	return (
-		<div className="flex min-h-[calc(100vh-64px-410px)] md:min-h-[calc(100vh-64px-302px)] bg-gray-100">
-			<SideBar navItems={navItems} />
-			<Outlet />
+		<div className="flex relative min-h-[calc(100vh-64px-410px)] md:min-h-[calc(100vh-64px-302px)] bg-gray-100">
+			<div className="absolute top-1/2 left-0 bg-transparent">
+				<SideBar navItems={navItems} />
+			</div>
+			<div className="pl-48 w-full">
+				<Outlet />
+			</div>
 		</div>
 	);
 };

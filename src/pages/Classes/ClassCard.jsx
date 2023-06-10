@@ -26,12 +26,21 @@ export default function ClassCard({ data }) {
 	const navigate = useNavigate();
 
 	const { user } = useAuth();
-	const { image, name, ratings, instructor, price, seats, total_seats } =
-		data;
+  const {
+    _id,
+		image,
+		name,
+		ratings,
+		instructor,
+		price,
+		available_seats,
+		total_seats,
+	} = data;
 
 	const selectClass = () => {
 		if (user) {
-			const selectedClass = {
+      const selectedClass = {
+        classID : _id,
 				image,
 				name,
 				price: parseFloat(price),
@@ -71,7 +80,7 @@ export default function ClassCard({ data }) {
 	return (
 		<Card
 			className={`w-full max-w-[26rem] shadow-lg ${
-				seats <= 0 && "bg-red-200"
+				available_seats <= 0 && "bg-red-200"
 			}`}>
 			<CardHeader floated={false} color="blue-gray">
 				<img className="h-60 w-full" src={image} alt={name} />
@@ -113,7 +122,7 @@ export default function ClassCard({ data }) {
 				</Typography>
 				<div className="flex justify-between mt-4">
 					<Typography>
-						{seats}
+						{available_seats}
 						<span className="text-xs"> seats available</span>
 					</Typography>
 					<Typography
@@ -128,21 +137,11 @@ export default function ClassCard({ data }) {
 			<CardFooter className="pt-2">
 				<Button
 					onClick={selectClass}
-					disabled={isAdmin || isInstructor}
+					disabled={isAdmin || isInstructor || available_seats <= 0}
 					size="lg"
 					fullWidth={true}>
 					Select
 				</Button>
-
-				{/* {seats <= 0 || isAdmin || isInstructor ? (
-					<Button disabled size="lg" fullWidth={true}>
-						Select
-					</Button>
-				) : (
-					<Button onClick={selectClass} size="lg" fullWidth={true}>
-						Select
-					</Button>
-				)} */}
 			</CardFooter>
 		</Card>
 	);

@@ -12,6 +12,8 @@ const SelectedClass = () => {
 	const [cart, refetch, isLoading] = useCart();
 	const [axiosSecure] = useAxiosSecure();
 
+	console.log(cart);
+
 	const TABLE_HEAD = ["Name", "Added", "Price", "", ""];
 
 	const handleDelete = (id) => {
@@ -50,8 +52,8 @@ const SelectedClass = () => {
 		return <div>gob</div>;
 	} else {
 		return (
-			<div className="overflow-scroll my-10 mx-6 h-full w-full">
-				<table className="w-full min-w-max table-auto text-left">
+			<div className="overflow-hidden overflow-x-scroll h-full w-full">
+				<table className="w-full my-10 min-w-max table-auto text-left">
 					<thead>
 						<tr>
 							{TABLE_HEAD.map((head, index) => (
@@ -69,49 +71,71 @@ const SelectedClass = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{cart?.map(({ _id, name, price, addedtime, image }, index) => (
-							<tr key={_id} className="even:bg-blue-gray-50/50">
-								<td className="p-4">
-									<Typography
-										variant="small"
-										color="blue-gray"
-										className="font-normal">
-										{name}
-									</Typography>
-								</td>
-								<td className="p-4">
-									<Typography
-										variant="small"
-										color="blue-gray"
-										className="font-normal">
-										{new Date(addedtime).toLocaleString()}
-									</Typography>
-								</td>
-								<td className="p-4">
-									<Typography
-										variant="small"
-										color="blue-gray"
-										className="font-normal">
-										${price}
-									</Typography>
-								</td>
-								<td className="p-4">
-									<button
-										onClick={() => {
-											handleDelete(_id);
-										}}>
-										<AiFillDelete size={25} color="red" />
-									</button>
-								</td>
-								<td className="p-4">
-									<Link
-										state={{name, price, image, _id}}
-										to={`/dashboard/payment/${_id}`}>
-										<BTN>Pay</BTN>
-									</Link>
-								</td>
-							</tr>
-						))}
+						{cart?.map(
+							({
+								_id,
+								name,
+								price,
+								addedtime,
+								image,
+								classID,
+							}) => (
+								<tr
+									key={_id}
+									className="even:bg-blue-gray-50/50">
+									<td className="p-4">
+										<Typography
+											variant="small"
+											color="blue-gray"
+											className="font-normal">
+											{name}
+										</Typography>
+									</td>
+									<td className="p-4">
+										<Typography
+											variant="small"
+											color="blue-gray"
+											className="font-normal">
+											{new Date(
+												addedtime
+											).toLocaleString()}
+										</Typography>
+									</td>
+									<td className="p-4">
+										<Typography
+											variant="small"
+											color="blue-gray"
+											className="font-normal">
+											${price}
+										</Typography>
+									</td>
+									<td className="p-4">
+										<button
+											onClick={() => {
+												handleDelete(_id);
+											}}>
+											<AiFillDelete
+												size={25}
+												color="red"
+											/>
+										</button>
+									</td>
+									<td className="p-4">
+										<Link
+											state={{
+												name,
+												price,
+												image,
+												_id,
+												classID,
+											}}
+											to={`/dashboard/payment/${_id}`}>
+											<BTN>Pay</BTN>
+										</Link>
+									</td>
+								</tr>
+							)
+						)}
 					</tbody>
 				</table>
 			</div>

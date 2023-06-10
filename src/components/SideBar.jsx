@@ -3,19 +3,18 @@ import { NavLink } from "react-router-dom";
 
 export default function SideBar({ navItems }) {
 	return (
-		<div className="rounded-none overflow-hidden h-full  w-48 p-4 ">
-			<div className="mb-2 p-4">
-				<Typography variant="h5" color="blue-gray">
-					Sidebar
-				</Typography>
-			</div>
-			<List>
+		<div className="fixed top-16 rounded-none overflow-hidden h-fit w-48">
+			<div className="mb-2 p-4">Dashboard</div>
+			<div className="flex flex-col">
 				{navItems?.map((nav) => (
-					<NavLink to={`/dashboard/${nav.to}`} key={nav.to}>
-						<ListItem>{nav.lable}</ListItem>
+					<NavLink
+						className={"px-8 py-2 rounded hover:bg-gray-200"}
+						to={`/dashboard/${nav.to}`}
+						key={nav.to}>
+						{nav.lable}
 					</NavLink>
 				))}
-			</List>
+			</div>
 		</div>
 	);
 }
