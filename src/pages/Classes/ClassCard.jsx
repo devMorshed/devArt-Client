@@ -79,7 +79,7 @@ export default function ClassCard({ data }) {
 
 	return (
 		<Card
-			className={`w-full max-w-[26rem] shadow-lg ${
+			className={` dark:bg-gray-700 dark:text-gray-50 w-full max-w-[26rem] shadow-lg ${
 				available_seats <= 0 && "bg-red-200"
 			}`}>
 			<CardHeader floated={false} color="blue-gray">
@@ -88,34 +88,23 @@ export default function ClassCard({ data }) {
 			</CardHeader>
 			<CardBody>
 				<div className="mb-3 flex gap-3 items-center justify-between">
-					<Typography
-						variant="h5"
-						color="blue-gray"
-						className="font-medium">
+					<Typography variant="h5" className="font-medium">
 						{name}
 					</Typography>
 
 					<Typography
-						color="blue-gray"
 						className="flex items-center gap-1.5 font-normal">
 						<StarIcon className="-mt-0.5 h-5 w-5 text-yellow-700" />
 						{ratings}
 					</Typography>
-					<IconButton
-						size="sm"
-						color="red"
-						variant="text"
-						className="rounded-full">
-						<HeartIcon className="h-6 w-6" />
-					</IconButton>
+					
 				</div>
 				<Typography
 					variant="h6"
-					color="blue-gray"
 					className="font-medium my-2 tracking-wider">
 					{instructor}
 				</Typography>
-				<Typography color="gray">
+				<Typography >
 					Enter a freshly updated and thoughtfully furnished peaceful
 					home surrounded by ancient trees, stone walls, and open
 					meadows.
@@ -126,7 +115,6 @@ export default function ClassCard({ data }) {
 						<span className="text-xs"> seats available</span>
 					</Typography>
 					<Typography
-						color="blue-gray"
 						className="flex items-center gap-1.5 font-normal">
 						<CurrencyDollarIcon className="-mt-0.5 h-8 w-8 text-green-700" />
 						{price}
