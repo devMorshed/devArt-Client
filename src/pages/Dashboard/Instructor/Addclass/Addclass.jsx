@@ -1,22 +1,27 @@
 import { useForm } from "react-hook-form";
 import SectionHead from "../../../../components/Shared/SectionHead";
-import { Card, Input } from "@material-tailwind/react";
+import { Card, Input, Textarea } from "@material-tailwind/react";
 
 import BTN from "../../../../components/Shared/BTN";
 import useAuth from "../../../../hooks/useAuth";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import axios from "axios";
 const Addclass = () => {
 	const { user } = useAuth();
+	const [axiosSecure] = useAxiosSecure();
 	const {
 		handleSubmit,
 		register,
 		formState: { errors },
 	} = useForm();
 
-	const onSubmit = (values) => {
+	const onSubmit = async (values) => {
 		console.log(values);
 		values.status = "pending";
 		values.enrolled_student = 0;
-		
+		await axiosSecure
+			.post(`/classes/${user?.email}`, values)
+			.then((res) => console.log(res));
 	};
 	return (
 		<section className="p-4 mt-10">
@@ -28,24 +33,20 @@ const Addclass = () => {
 					<div className="flex dark:placeholder:text-white flex-col md:flex-row gap-4">
 						<div>
 							<Input
-								{...register("classname", { required: true })}
+								{...register("name", { required: true })}
 								className="dark:text-white"
 								label="Class Name"
 							/>
-							{errors.classname && (
-								<span>Class Name is required</span>
-							)}
+							{errors.name && <span>Class Name is required</span>}
 						</div>
 
 						<div>
 							<Input
-								{...register("imageURL", { required: true })}
+								{...register("image", { required: true })}
 								className="dark:text-white"
 								label="Class Image url"
 							/>
-							{errors.imageURL && (
-								<span>Image url is required</span>
-							)}
+							{errors.image && <span>Image url is required</span>}
 						</div>
 					</div>
 
@@ -53,6 +54,7 @@ const Addclass = () => {
 						<div>
 							{" "}
 							<Input
+								{...register("instructor", { required: true })}
 								className="dark:text-white"
 								label="Instructor Name"
 								readOnly
@@ -62,6 +64,9 @@ const Addclass = () => {
 
 						<div>
 							<Input
+								{...register("instructor_mail", {
+									required: true,
+								})}
 								className="dark:text-white"
 								label="Instructor Email"
 								defaultValue={user?.email}
@@ -94,6 +99,11 @@ const Addclass = () => {
 							{errors.price && <span>Price is required</span>}
 						</div>
 					</div>
+					<Textarea
+						{...register("details", { required: true })}
+						label="Details"
+						rows={1}
+					/>
 					<div className="flex justify-center">
 						<BTN type="submit">Add Class</BTN>
 					</div>
