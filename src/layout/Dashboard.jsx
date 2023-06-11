@@ -14,6 +14,16 @@ const Dashboard = () => {
 			to: "selected",
 			lable: "Selected",
 		},
+		{
+			id: 3,
+			to: "enrolled",
+			lable: "Enrolled",
+		},
+		{
+			id: 4,
+			to: "payment-history",
+			lable: "Payment History",
+		},
 	];
 
 	const instructorNav = [
@@ -24,8 +34,13 @@ const Dashboard = () => {
 		},
 		{
 			id: 2,
-			to: "add",
-			lable: "Add",
+			to: "addclass",
+			lable: "Add Class",
+		},
+		{
+			id: 3,
+			to: "myclasses",
+			lable: "My Classes",
 		},
 	];
 

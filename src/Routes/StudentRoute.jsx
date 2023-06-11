@@ -1,18 +1,18 @@
 import { Navigate } from "react-router-dom";
 import useRole from "../hooks/useRole";
 
-const InstructorRoute = ({ children }) => {
+const StudentRoute = ({ children }) => {
 	const [userRole, userRoleLoading] = useRole();
 
 	if (userRoleLoading) {
-		return "instructor Loader here huh";
+		return "student loading here huh";
 	}
 
-	if (userRole === "instructor") {
+	if (userRole === "student") {
 		return children;
 	} else {
 		return <Navigate to={"/login"}></Navigate>;
 	}
 };
 
-export default InstructorRoute;
+export default StudentRoute;
