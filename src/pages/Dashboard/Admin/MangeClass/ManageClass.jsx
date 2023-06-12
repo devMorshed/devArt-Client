@@ -17,6 +17,7 @@ import BTN from "../../../../components/Shared/BTN";
 import SmallBTN from "../../../../components/Shared/SmallBTN";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import Loader from "../../../../components/Shared/Loader";
 
 const ManageClass = () => {
 	const [axiosSecure] = useAxiosSecure();
@@ -131,7 +132,7 @@ const ManageClass = () => {
 				<SectionHead heading={"Manage Class"} />
 			</div>
 			{isLoading ? (
-				"loaduing"
+				<Loader />
 			) : data?.length > 0 ? (
 				<Card className="p-4 dark:bg-gray-700 dark:text-gray-50 mx-auto my-10">
 					<table className="w-full my-4 overflow-y-auto ">
@@ -215,7 +216,6 @@ const ManageClass = () => {
 			) : (
 				<div className="flex flex-col items-center mx-auto w-full   justify-center my-10 text-2xl">
 					<p>no data found</p>
-					
 				</div>
 			)}
 

@@ -86,7 +86,7 @@ const Login = () => {
 						<div className="mb-4 flex flex-col gap-6">
 							<div>
 								<Input
-									defaultValue={"test@test.com"}
+									defaultValue={"admin@test.com"}
 									{...register("mail", {
 										required: "Email Address is required",
 										pattern: {

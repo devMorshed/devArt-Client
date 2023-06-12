@@ -177,6 +177,7 @@ const Signup = () => {
 								)}
 
 								<button
+									type="button"
 									onClick={() => {
 										setShowPass(!showPass);
 									}}
@@ -215,6 +216,7 @@ const Signup = () => {
 								)}
 
 								<button
+									type="button"
 									onClick={() => {
 										setShowConfirmPass(!showConfirmPass);
 									}}

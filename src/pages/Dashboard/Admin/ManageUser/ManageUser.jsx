@@ -4,6 +4,7 @@ import { Card } from "@material-tailwind/react";
 import SectionHead from "../../../../components/Shared/SectionHead";
 import SmallBTN from "../../../../components/Shared/SmallBTN";
 import Swal from "sweetalert2";
+import Loader from "../../../../components/Shared/Loader";
 
 const MangeUser = () => {
 	const [axiosSecure] = useAxiosSecure();
@@ -91,7 +92,7 @@ const MangeUser = () => {
 				<SectionHead heading={"All User"} />
 			</div>
 			{isLoading ? (
-				"loaduing"
+				<Loader />
 			) : (
 				<Card className="p-4 overflow-auto dark:bg-gray-700 dark:text-gray-50 max-w-3xl mx-auto my-10">
 					<table className="w-full my-4 overflow-auto ">
