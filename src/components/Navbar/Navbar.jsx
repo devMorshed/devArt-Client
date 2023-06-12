@@ -6,8 +6,6 @@ import useAuth from "../../hooks/useAuth";
 import { ImSpinner3 } from "react-icons/im";
 import du from "../../assets/dd.gif";
 const Navbar = () => {
-	// ##TODO Have to make logo
-	// ##TODO Have to active style nav items
 
 	const { user, loading } = useAuth();
 

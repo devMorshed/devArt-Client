@@ -8,6 +8,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { Link, NavLink } from "react-router-dom";
 import BTN from "../../../../components/Shared/BTN";
 import SectionHead from "../../../../components/Shared/SectionHead";
+import Loader from "../../../../components/Shared/Loader";
 
 const SelectedClass = () => {
 	const [cart, refetch, isLoading] = useCart();
@@ -43,14 +44,19 @@ const SelectedClass = () => {
 		});
 	};
 
-	// todo need proper loader
-
 	if (isLoading) {
-		return <div>Loading</div>;
+		return <Loader />;
 	}
 
 	if (cart.length <= 0) {
-		return <div>gob</div>;
+		return (
+			<section className="p-4">
+				<div className="pt-10">
+					<SectionHead heading={"Selected Class"} />
+					<p className="text-2xl my-4 text-center">No Class Selected.</p>
+				</div>
+			</section>
+		);
 	} else {
 		return (
 			<section className="px-4">
@@ -82,8 +88,8 @@ const SelectedClass = () => {
 									name,
 									price,
 									addedtime,
-                  image,
-                  instructor_mail,
+									image,
+									instructor_mail,
 									classID,
 								}) => (
 									<tr
@@ -129,8 +135,8 @@ const SelectedClass = () => {
 										<td className="p-4">
 											<Link
 												state={{
-                          name,
-                          instructor_mail,
+													name,
+													instructor_mail,
 													price,
 													image,
 													_id,

@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import { Card } from "@material-tailwind/react";
 import SectionHead from "../../../../components/Shared/SectionHead";
+import Loader from "../../../../components/Shared/Loader";
 
 const PaymentHistory = () => {
 	const [axiosSecure] = useAxiosSecure();
@@ -34,14 +35,15 @@ const PaymentHistory = () => {
 	console.log(isLoading);
 
 	if (isLoading) {
-		return "loading";
+		return <Loader />;
 	}
-	if (data) {
-		return (
-			<section className="px-4">
-				<div className="pt-10">
-					<SectionHead heading={"payment history"} />
-				</div>
+
+	return (
+		<section className="px-4">
+			<div className="pt-10">
+				<SectionHead heading={"payment history"} />
+			</div>
+			{!data?.length <= 0 ? (
 				<Card className="p-4 dark:bg-gray-700 dark:text-gray-50 max-w-3xl mx-auto my-10">
 					<table className="w-full my-4 overflow-y-auto ">
 						<thead>
@@ -66,9 +68,13 @@ const PaymentHistory = () => {
 						</tbody>
 					</table>
 				</Card>
-			</section>
-		);
-	}
+			) : (
+				<p className="text-2xl my-4 text-center">
+					No previous history.
+				</p>
+			)}
+		</section>
+	);
 };
 
 export default PaymentHistory;

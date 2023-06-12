@@ -10,7 +10,7 @@ import {
 	CardHeader,
 	Typography,
 } from "@material-tailwind/react";
-
+import Loader from "../../../../components/Shared/Loader";
 
 const EnrolledCLass = () => {
 	const [axiosSecure] = useAxiosSecure();
@@ -24,16 +24,16 @@ const EnrolledCLass = () => {
 	console.log(data, isLoading);
 
 	if (isLoading) {
-		return <div>Loading</div>;
+		return <Loader />;
 	}
 
-	if (data) {
-		return (
-			<section className="py-10 w-full dark:bg-gray-800 dark:text-gray-50">
-				<SectionHead
-					heading={"Enrolled Classes"}
-					subheading={"Start Your Journey"}
-				/>
+	return (
+		<section className="py-10 w-full dark:bg-gray-800 dark:text-gray-50">
+			<SectionHead
+				heading={"Enrolled Classes"}
+				subheading={"Start Your Journey"}
+			/>
+			{!data?.length <= 0 ? (
 				<div className="my-10 grid px-6 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-center items-center">
 					{data?.map(({ _id, image, name }) => (
 						<Card
@@ -66,23 +66,15 @@ const EnrolledCLass = () => {
 								<Button size="lg" fullWidth={true}>
 									View Class
 								</Button>
-
-								{/* {seats <= 0 || isAdmin || isInstructor ? (
-					<Button disabled size="lg" fullWidth={true}>
-						Select
-					</Button>
-				) : (
-					<Button onClick={selectClass} size="lg" fullWidth={true}>
-						Select
-					</Button>
-				)} */}
 							</CardFooter>
 						</Card>
 					))}
 				</div>
-			</section>
-		);
-	}
+			) : (
+				<p className="text-2xl my-4 text-center">Not enrolled in any Class.</p>
+			)}
+		</section>
+	);
 };
 
 export default EnrolledCLass;

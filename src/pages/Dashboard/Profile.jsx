@@ -8,7 +8,7 @@ const Profile = () => {
  
   
 	return (
-		<div>
+		<div className="flex h-full my-auto items-center justify-center">
 			<div onClick={logOut}>
 				<BTN>Log Out</BTN>
 			</div>

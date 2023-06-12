@@ -5,6 +5,7 @@ import { Card } from "@material-tailwind/react";
 import SectionHead from "../../../../components/Shared/SectionHead";
 import { Link } from "react-router-dom";
 import BTN from "../../../../components/Shared/BTN";
+import Loader from "../../../../components/Shared/Loader";
 
 const MyClass = () => {
 	const [axiosSecure] = useAxiosSecure();
@@ -51,9 +52,9 @@ const MyClass = () => {
 				<SectionHead heading={"My Class"} />
 			</div>
 			{isLoading ? (
-				"loaduing"
+				<Loader />
 			) : data?.length > 0 ? (
-				<Card className="p-4 dark:bg-gray-700 dark:text-gray-50 max-w-3xl mx-auto my-10">
+				<Card className="p-4 overflow-auto dark:bg-gray-700 dark:text-gray-50 max-w-3xl mx-auto my-10">
 					<table className="w-full my-4 overflow-y-auto ">
 						<thead>
 							<tr className="bg-gray-500 text-gray-50">

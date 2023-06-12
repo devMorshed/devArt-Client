@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import useRole from "../hooks/useRole";
+import Loader from "../components/Shared/Loader";
 
 const Dashboard = () => {
 	const studentNav = [
@@ -67,7 +68,7 @@ const Dashboard = () => {
 	console.log(userRole);
 
 	if (userRoleLoading) {
-		return <>Loading</>;
+		return <Loader />;
 	} else {
 		return (
 			<div className="flex relative min-h-[calc(100vh-64px-410px)] md:min-h-[calc(100vh-64px-302px)] bg-gray-100">
