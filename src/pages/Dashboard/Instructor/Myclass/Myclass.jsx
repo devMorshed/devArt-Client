@@ -54,7 +54,7 @@ const MyClass = () => {
 			{isLoading ? (
 				<Loader />
 			) : data?.length > 0 ? (
-				<Card className="p-4 overflow-auto dark:bg-gray-700 dark:text-gray-50 max-w-3xl mx-auto my-10">
+				<Card className="p-4 ove dark:bg-gray-700 dark:text-gray-50 max-w-3xl mx-auto my-10">
 					<table className="w-full my-4 overflow-y-auto ">
 						<thead>
 							<tr className="bg-gray-500 text-gray-50">
@@ -82,7 +82,11 @@ const MyClass = () => {
 										<td>${price}</td>
 										<td>{enrolled_studentss}</td>
 										<td>{status}</td>
-										<td>{feedback}</td>
+										<td>
+											{status === "denied"
+												? feedback
+												: ""}
+										</td>
 										<td>
 											<BTN>Update</BTN>
 										</td>

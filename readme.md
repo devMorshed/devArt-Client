@@ -1,18 +1,27 @@
-## Main Pages
-1. Home 
-2. Log In
-3. Sign Up
-4. Instructors
-5. Classess
-6. Dashboard. (student - instructor - admin)
-7.Payment
+# DevArt
 
+Devart is a MERN stack project built on using MongoDB Express React and Nodejs.
 
+## Features
 
+-   Popular class based on enrolled student number
+-   Popular instructors
+-   Statistics.
+-   Authentication of User Profile
+-   Authorize roles to access different create update and delete permissions
+-   Dark theme
+-   Payment intregation using Stripe.
 
-### Navigation Bar
-it will contain navmenus, 
---- Logo------ Home - Instructors - Classes ----- Dashboard - DP---
+## Technologies
 
+-   Material Tailwind.
+-   Stripe
+-   Axios
+-   Tanstack/react-query
+-   React Hook Form
+-   React Countup
+-   React Sweetalert
 
-- Dark Mode enabled . 
+## 🔗 Links
+
+[Click Me](https://toyvortex.web.app/) to view live site.

@@ -19,12 +19,13 @@ import ManageUser from "../pages/Dashboard/Admin/ManageUser/ManageUser";
 import Profile from "../pages/Dashboard/Profile";
 import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHistory";
 import StudentRoute from "./StudentRoute";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <MainLayout />,
-		errorElement: "ErrorPage",
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: "/",
