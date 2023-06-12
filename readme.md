@@ -24,4 +24,4 @@ Devart is a MERN stack project built on using MongoDB Express React and Nodejs.
 
 ## 🔗 Links
 
-[Click Me](https://toyvortex.web.app/) to view live site.
+[Click Me](https://devart-12.web.app) to view live site.
