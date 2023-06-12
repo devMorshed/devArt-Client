@@ -1,14 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import { Avatar, Card } from "@material-tailwind/react";
+import {
+	Avatar,
+	Button,
+	Card,
+	Dialog,
+	DialogBody,
+	DialogFooter,
+	DialogHeader,
+	Textarea,
+} from "@material-tailwind/react";
 import SectionHead from "../../../../components/Shared/SectionHead";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import BTN from "../../../../components/Shared/BTN";
 import SmallBTN from "../../../../components/Shared/SmallBTN";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const ManageClass = () => {
 	const [axiosSecure] = useAxiosSecure();
+	const [open, setOpen] = useState(false);
+	const [curclass, setCurclass] = useState("");
+	const handleOpen = () => setOpen((cur) => !cur);
 
 	const tHeads = [
 		{
@@ -50,6 +64,8 @@ const ManageClass = () => {
 		const res = await axiosSecure.get("/allclass");
 		return res.data;
 	});
+
+	const { register, handleSubmit } = useForm();
 
 	console.log(data);
 	console.log(isLoading);
@@ -95,6 +111,19 @@ const ManageClass = () => {
 			}
 		});
 	};
+
+	const onSubmit = (data) => {
+		console.log(data);
+		axiosSecure.put(`/feedback/${curclass}`, data).then((data) => {
+			console.log(data.data);
+			if (data.data.modifiedCount === 1) {
+				refetch();
+				Swal.fire("Feedback Sent!", "success");
+			}
+		});
+	};
+
+	console.log(curclass);
 
 	return (
 		<section className="px-4">
@@ -167,7 +196,15 @@ const ManageClass = () => {
 												onClick={() => denyClass(_id)}
 												text={"Deny"}
 											/>
-											<SmallBTN text={"Feedback"} />
+											<div
+												onClick={() => {
+													setCurclass(_id);
+												}}>
+												<SmallBTN
+													onClick={handleOpen}
+													text={"Feedback"}
+												/>
+											</div>
 										</td>
 									</tr>
 								)
@@ -183,6 +220,34 @@ const ManageClass = () => {
 					</Link>
 				</div>
 			)}
+
+			<Dialog
+				onSubmit={() => console.log("object")}
+				open={open}
+				handler={handleOpen}>
+				<DialogHeader>Add Class Feedback</DialogHeader>
+				<DialogBody divider>
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<Textarea {...register("feedback")} label="Feedback" />
+						<div className="flex justify-end">
+							<Button
+								variant="text"
+								color="red"
+								onClick={handleOpen}
+								className="mr-1">
+								<span>Cancel</span>
+							</Button>
+							<Button
+								variant="gradient"
+								color="green"
+								type="submit"
+								onClick={handleOpen}>
+								<span>Send</span>
+							</Button>
+						</div>
+					</form>
+				</DialogBody>
+			</Dialog>
 		</section>
 	);
 };
