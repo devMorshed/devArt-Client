@@ -5,8 +5,8 @@ const useCart = () => {
 	const { user, loading } = useAuth();
 	const [axiosSecure] = useAxiosSecure();
 	const {
-		refetch,
 		data: cart = [],
+		refetch,
 		isLoading,
 	} = useQuery({
 		queryKey: ["cart", user?.email],

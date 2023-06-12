@@ -21,7 +21,19 @@ const MyClass = () => {
 		},
 		{
 			id: 3,
-			lable: "Date",
+			lable: "Enrolled",
+		},
+		{
+			id: 4,
+			lable: "Status",
+		},
+		{
+			id: 5,
+			lable: "Feedback",
+		},
+		{
+			id: 6,
+			lable: "Action",
 		},
 	];
 
@@ -36,7 +48,7 @@ const MyClass = () => {
 	return (
 		<section className="px-4">
 			<div className="pt-10">
-				<SectionHead heading={"payment history"} />
+				<SectionHead heading={"My Class"} />
 			</div>
 			{isLoading ? (
 				"loaduing"
@@ -51,24 +63,31 @@ const MyClass = () => {
 							</tr>
 						</thead>
 						<tbody className="">
-							{data?.map(({ _id, paymentDate, price, name }) => (
-								<tr
-									className="text-center bg-gray-100 text-gray-800 even:bg-orange-100 dark:even:bg-orange-200"
-									key={_id}>
-									<td className="text-start p-4">{name}</td>
-									<td>${price}</td>
-									<td>
-										{new Date(paymentDate).toLocaleString()}
-									</td>
-								</tr>
-							))}
+							{data?.map(
+								({ _id, enrolled_student, feedback, status, price, name }) => (
+									<tr
+										className="text-center bg-gray-100 text-gray-800 even:bg-orange-100 dark:even:bg-orange-200"
+										key={_id}>
+										<td className="text-start p-4">
+											{name}
+										</td>
+										<td>${price}</td>
+										<td>{enrolled_student}</td>
+										<td>{status}</td>
+										<td>{feedback}</td>
+										<td><BTN>Update</BTN></td>
+									</tr>
+								)
+							)}
 						</tbody>
 					</table>
 				</Card>
 			) : (
 				<div className="flex flex-col items-center mx-auto w-full   justify-center my-10 text-2xl">
 					<p>no data found</p>
-						<Link to={'/dashboard/addclass'}><BTN>Add Class</BTN></Link>
+					<Link to={"/dashboard/addclass"}>
+						<BTN>Add Class</BTN>
+					</Link>
 				</div>
 			)}
 		</section>

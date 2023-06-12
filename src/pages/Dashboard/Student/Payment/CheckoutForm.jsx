@@ -7,7 +7,7 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, name, classID, cartID }) => {
+const CheckoutForm = ({ price, name, classID, cartID, instructor_mail }) => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const [cardError, setCardError] = useState();
@@ -27,8 +27,8 @@ const CheckoutForm = ({ price, name, classID, cartID }) => {
 					setClientSecret(res.data.clientSecret);
 				});
 		}
-	}, [price, axiosSecure]);
-
+  }, [price, axiosSecure]);
+  
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (!stripe || !elements) {
@@ -80,6 +80,7 @@ const CheckoutForm = ({ price, name, classID, cartID }) => {
 				transactionId: paymentIntent.id,
 				price,
 				name,
+				instructor_mail,
 				cartID,
 				classID,
 				paymentDate: new Date(),

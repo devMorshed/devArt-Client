@@ -6,7 +6,7 @@ const Dashboard = () => {
 	const studentNav = [
 		{
 			id: 1,
-			to: "/",
+			to: "",
 			lable: "Profile",
 		},
 		{
@@ -56,7 +56,6 @@ const Dashboard = () => {
 			lable: "Manage",
 		},
 	];
-
 
 	const [userRole, userRoleLoading] = useRole();
 

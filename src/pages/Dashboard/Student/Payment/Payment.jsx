@@ -7,11 +7,11 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const Payment = () => {
 	const location = useLocation();
-	const { name, image, price, _id: cartID, classID } = location.state;
+	const { name, image, price, _id: cartID, instructor_mail, classID } = location.state;
 
 	const stripePromise = loadStripe(import.meta.env.VITE_PK);
 
-	// console.log('cart', cartID, classID);
+	console.log('cart', cartID, instructor_mail, classID);
 	return (
 		<div className="w-full p-6  my-10">
 			<div className="flex items-center my-4 justify-between">
@@ -30,6 +30,7 @@ const Payment = () => {
 					<CheckoutForm
 						name={name}
 						cartID={cartID}
+						instructor_mail={instructor_mail}
 						classID={classID}
 						price={price}></CheckoutForm>
 				</Elements>

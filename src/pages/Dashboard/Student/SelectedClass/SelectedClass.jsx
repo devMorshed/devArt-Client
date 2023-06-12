@@ -82,7 +82,8 @@ const SelectedClass = () => {
 									name,
 									price,
 									addedtime,
-									image,
+                  image,
+                  instructor_mail,
 									classID,
 								}) => (
 									<tr
@@ -128,7 +129,8 @@ const SelectedClass = () => {
 										<td className="p-4">
 											<Link
 												state={{
-													name,
+                          name,
+                          instructor_mail,
 													price,
 													image,
 													_id,

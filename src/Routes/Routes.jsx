@@ -60,15 +60,27 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: "payment/:id",
-						element: <Payment />,
+						element: (
+							<StudentRoute>
+								<Payment />
+							</StudentRoute>
+						),
 					},
 					{
 						path: "payment-history",
-						element: <PaymentHistory />,
+						element: (
+							<StudentRoute>
+								<PaymentHistory />
+							</StudentRoute>
+						),
 					},
 					{
 						path: "selected",
-						element: <SelectedClass />,
+						element: (
+							<StudentRoute>
+								<SelectedClass />
+							</StudentRoute>
+						),
 					},
 					{
 						path: "enrolled",

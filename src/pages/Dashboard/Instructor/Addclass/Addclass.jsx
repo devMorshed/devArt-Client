@@ -18,6 +18,7 @@ const Addclass = () => {
 	const onSubmit = async (values) => {
 		console.log(values);
 		values.status = "pending";
+		values.feedback = "";
 		values.enrolled_student = 0;
 		await axiosSecure
 			.post(`/classes/${user?.email}`, values)
@@ -52,7 +53,6 @@ const Addclass = () => {
 
 					<div className="flex flex-col md:flex-row gap-4">
 						<div>
-							{" "}
 							<Input
 								{...register("instructor", { required: true })}
 								className="dark:text-white"

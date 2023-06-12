@@ -16,35 +16,37 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import useRole from "../../hooks/useRole";
 
 export default function ClassCard({ data }) {
-	// const isInstructor = true;
-	const isInstructor = false;
-	// const isAdmin = true;
-	const isAdmin = false;
-	// const user = false;
+	const [userRole] = useRole();
 	const navigate = useNavigate();
 
 	const { user } = useAuth();
-  const {
-    _id,
+	const {
+		_id,
 		image,
 		name,
 		ratings,
-		instructor,
+    instructor,
+    instructor_mail,
 		price,
 		available_seats,
 		total_seats,
-	} = data;
+		details,
+  } = data;
+  
+  console.log(data);
 
 	const selectClass = () => {
 		if (user) {
-      const selectedClass = {
-        classID : _id,
+			const selectedClass = {
+				classID: _id,
 				image,
 				name,
 				price: parseFloat(price),
-				email: user.email,
+        user_email: user.email,
+        instructor_mail,
 				addedtime: new Date().getTime(),
 				status: "selected",
 			};
@@ -92,30 +94,23 @@ export default function ClassCard({ data }) {
 						{name}
 					</Typography>
 
-					<Typography
-						className="flex items-center gap-1.5 font-normal">
+					<Typography className="flex items-center gap-1.5 font-normal">
 						<StarIcon className="-mt-0.5 h-5 w-5 text-yellow-700" />
 						{ratings}
 					</Typography>
-					
 				</div>
 				<Typography
 					variant="h6"
 					className="font-medium my-2 tracking-wider">
 					{instructor}
 				</Typography>
-				<Typography >
-					Enter a freshly updated and thoughtfully furnished peaceful
-					home surrounded by ancient trees, stone walls, and open
-					meadows.
-				</Typography>
+				<Typography>{details}</Typography>
 				<div className="flex justify-between mt-4">
 					<Typography>
 						{available_seats}
 						<span className="text-xs"> seats available</span>
 					</Typography>
-					<Typography
-						className="flex items-center gap-1.5 font-normal">
+					<Typography className="flex items-center gap-1.5 font-normal">
 						<CurrencyDollarIcon className="-mt-0.5 h-8 w-8 text-green-700" />
 						{price}
 						<span className="text-xs"> only.</span>
@@ -125,7 +120,11 @@ export default function ClassCard({ data }) {
 			<CardFooter className="pt-2">
 				<Button
 					onClick={selectClass}
-					disabled={isAdmin || isInstructor || available_seats <= 0}
+					disabled={
+						userRole === "admin" ||
+						userRole === "instructor" ||
+						available_seats <= 0
+					}
 					size="lg"
 					fullWidth={true}>
 					Select

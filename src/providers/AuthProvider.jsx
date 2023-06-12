@@ -58,6 +58,7 @@ const AuthProvider = ({ children }) => {
 					name: currentUser.displayName,
 					email: currentUser.email,
 					role: "student",
+					image: currentUser.photoURL,
 				});
 				// storing user JWT token
 				axios
