@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
 	const logOut = () => {
 		setLoading(true);
 
-		return signOut(auth);
+		return signOut(auth).then(localStorage.removeItem("access_token"));
 	};
 
 	const updateUserProfile = (name, photo) => {
@@ -53,13 +53,13 @@ const AuthProvider = ({ children }) => {
 			setUser(currentUser);
 
 			if (currentUser) {
-				// Setting current user to database
-				axios.post(`/user/${currentUser?.email}`, {
-					name: currentUser.displayName,
-					email: currentUser.email,
-					role: "student",
-					image: currentUser.photoURL,
-				});
+				// // Setting current user to database
+				// axios.post(`/user/${currentUser?.email}`, {
+				// 	name: currentUser.displayName,
+				// 	email: currentUser.email,
+				// 	role: "student",
+				// 	image: currentUser.photoURL,
+				// });
 				// storing user JWT token
 				axios
 					.post("/jwt", {

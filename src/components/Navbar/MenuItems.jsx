@@ -21,7 +21,7 @@ const MenuItems = () => {
 	];
 
 	return (
-		<div className="flex md:flex-row flex-col gap-2">
+		<div className="flex md:flex-row flex-col gap-4">
 			{navItems?.map((navItem) => (
 				<NavLink key={navItem.id} to={navItem.to}>
 					{navItem.lable}

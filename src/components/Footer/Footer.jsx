@@ -1,6 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { BsFacebook, BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
+import du from "../../assets/dd.gif";
 
 const LINKS = [
 	{
@@ -24,9 +25,14 @@ export default function Footer() {
 		<footer className="relative py-8 w-full dark:bg-gray-800 dark:!text-gray-50">
 			<div className="mx-auto w-full max-w-7xl px-8">
 				<div className="grid grid-cols-1 justify-between items-center gap-4 md:grid-cols-2">
-					<Typography variant="h2" className="mb-6">
-						DevArt
-					</Typography>
+					<div>
+						<Link className="flex items-center" to={"/"}>
+						<img className="w-20 rounded-full" src={du} alt="" />
+							<p className="text-4xl font-bold tracking-tighter">
+								evArt
+							</p>
+						</Link>
+					</div>
 					<div className="grid grid-cols-3 justify-between gap-4">
 						{LINKS.map(({ title, items }) => (
 							<ul key={title}>

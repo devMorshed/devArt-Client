@@ -9,6 +9,7 @@ import { FaPlaneDeparture } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 const Signup = () => {
 	const {
 		setLoading,
@@ -46,12 +47,29 @@ const Signup = () => {
 	};
 
 	const onSubmit = ({ name, email, password, photo }) => {
+		console.log(name);
 		createUser(email, password)
 			.then((data) => {
 				console.log(data);
 				updateUserProfile(name, photo)
 					.then((data) => {
 						console.log(data);
+						axios.post(`/user/${email}`, {
+							name: name,
+							email: email,
+							role: "student",
+							image: photo,
+						});
+						console.log("sign token");
+						axios
+							.post("/jwt", {
+								name: name,
+								email: email,
+							})
+							.then((data) => {
+								localStorage.setItem("access_token", data.data);
+							});
+
 						toast.success("Signup Successfull");
 						setLoading(false);
 						navigate(destination);
@@ -64,7 +82,16 @@ const Signup = () => {
 	const handleGoogle = () => {
 		setLoading(false);
 		signInWithGoogle()
-			.then(() => {
+			.then((data) => {
+				console.log(data.user);
+				axios
+					.post("/jwt", {
+						name: data?.displayName,
+						email: data?.email,
+					})
+					.then((data) => {
+						localStorage.setItem("access_token", data.data);
+					});
 				toast.success("Sign In Successfull");
 				navigate(destination);
 			})

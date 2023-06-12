@@ -215,9 +215,7 @@ const ManageClass = () => {
 			) : (
 				<div className="flex flex-col items-center mx-auto w-full   justify-center my-10 text-2xl">
 					<p>no data found</p>
-					<Link to={"/dashboard/addclass"}>
-						<BTN>Add Class</BTN>
-					</Link>
+					
 				</div>
 			)}
 

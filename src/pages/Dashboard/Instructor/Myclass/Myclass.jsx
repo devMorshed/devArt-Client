@@ -64,7 +64,14 @@ const MyClass = () => {
 						</thead>
 						<tbody className="">
 							{data?.map(
-								({ _id, enrolled_student, feedback, status, price, name }) => (
+								({
+									_id,
+									enrolled_studentss,
+									feedback,
+									status,
+									price,
+									name,
+								}) => (
 									<tr
 										className="text-center bg-gray-100 text-gray-800 even:bg-orange-100 dark:even:bg-orange-200"
 										key={_id}>
@@ -72,10 +79,12 @@ const MyClass = () => {
 											{name}
 										</td>
 										<td>${price}</td>
-										<td>{enrolled_student}</td>
+										<td>{enrolled_studentss}</td>
 										<td>{status}</td>
 										<td>{feedback}</td>
-										<td><BTN>Update</BTN></td>
+										<td>
+											<BTN>Update</BTN>
+										</td>
 									</tr>
 								)
 							)}

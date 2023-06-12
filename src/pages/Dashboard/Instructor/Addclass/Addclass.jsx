@@ -18,8 +18,10 @@ const Addclass = () => {
 	const onSubmit = async (values) => {
 		console.log(values);
 		values.status = "pending";
+		values.available_seats = parseFloat(values.available_seats);
+		values.price = parseFloat(values.price);
 		values.feedback = "";
-		values.enrolled_student = 0;
+		values.enrolled_studentss = 0;
 		await axiosSecure
 			.post(`/classes/${user?.email}`, values)
 			.then((res) => console.log(res));

@@ -9,6 +9,7 @@ import { FaPlaneDeparture } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 const Login = () => {
 	const { setLoading, signIn, signInWithGoogle, loading } = useAuth();
 	const [showPass, setShowPass] = useState(false);
@@ -27,7 +28,14 @@ const Login = () => {
 	const onSubmit = ({ mail, password }) => {
 		signIn(mail, password)
 			.then((data) => {
-				console.log(data);
+				axios
+					.post("/jwt", {
+						name: data?.user.displayName,
+						email: data?.user.email,
+					})
+					.then((data) => {
+						localStorage.setItem("access_token", data.data);
+					});
 				toast.success("Sign In Successfull");
 				navigate(destination);
 				setLoading(false);
@@ -41,7 +49,16 @@ const Login = () => {
 	const handleGoogle = () => {
 		setLoading(false);
 		signInWithGoogle()
-			.then(() => {
+			.then((data) => {
+				console.log(data.user);
+				axios
+					.post("/jwt", {
+						name: data?.user.displayName,
+						email: data?.user.email,
+					})
+					.then((data) => {
+						localStorage.setItem("access_token", data.data);
+					});
 				toast.success("Sign In Successfull");
 				navigate(destination);
 			})
@@ -92,7 +109,7 @@ const Login = () => {
 
 							<div className="relative">
 								<Input
-									defaultValue={"Test#b7a12"}
+									defaultValue={"Testtest#"}
 									{...register("password", {
 										required: "Password is required",
 										minLength: {
@@ -114,7 +131,8 @@ const Login = () => {
 									</p>
 								)}
 
-								<button
+                <button
+                  type="button"
 									onClick={() => {
 										setShowPass(!showPass);
 									}}
