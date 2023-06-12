@@ -24,8 +24,7 @@ export default function Banner() {
 			)}>
 			<div className=" relative h-96 md:h-[450px]  lg:h-[555px]">
 				<img
-					src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-					alt="image 1"
+					src="https://i.ibb.co/P9z3Z8K/oil.jpg"
 					className="h-full w-full object-cover"
 				/>
 				<div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
@@ -40,11 +39,10 @@ export default function Banner() {
 							variant="lead"
 							color="white"
 							className="mb-12 opacity-80">
-							It is not so much for its beauty that the forest
-							makes a claim upon men&apos;s hearts, as for that
-							subtle something, that quality of air that emanation
-							from old trees, that so wonderfully changes and
-							renews a weary spirit.
+							Creativity allows us to view and solve problems more
+							openly and with innovation. Creativity opens the
+							mind. A society that has lost touch with its
+							creative side is an imprisoned society
 						</Typography>
 						<div className="flex justify-center gap-2">
 							<Button size="lg" color="white">
@@ -59,8 +57,7 @@ export default function Banner() {
 			</div>
 			<div className=" relative h-96 md:h-[450px] lg:h-[555px]">
 				<img
-					src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
-					alt="image 2"
+					src="https://i.ibb.co/R7v7VkH/c.jpg"
 					className="h-full w-full object-cover"
 				/>
 				<div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
@@ -75,11 +72,9 @@ export default function Banner() {
 							variant="lead"
 							color="white"
 							className="mb-12 opacity-80">
-							It is not so much for its beauty that the forest
-							makes a claim upon men&apos;s hearts, as for that
-							subtle something, that quality of air that emanation
-							from old trees, that so wonderfully changes and
-							renews a weary spirit.
+							Stimulate creativity and imagination: Children who
+							frequently make crafts, work with all their
+							ingenuity to create unique and original figures,
 						</Typography>
 						<div className="flex justify-center gap-2">
 							<Button size="lg" color="white">
@@ -94,8 +89,7 @@ export default function Banner() {
 			</div>
 			<div className=" relative h-96 md:h-[450px] lg:h-[555px]">
 				<img
-					src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
-					alt="image 3"
+					src="https://i.ibb.co/RQhc9gK/sc.webp"
 					className="h-full w-full object-cover"
 				/>
 				<div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
@@ -110,11 +104,9 @@ export default function Banner() {
 							variant="lead"
 							color="white"
 							className="mb-12 opacity-80">
-							It is not so much for its beauty that the forest
-							makes a claim upon men&apos;s hearts, as for that
-							subtle something, that quality of air that emanation
-							from old trees, that so wonderfully changes and
-							renews a weary spirit.
+							Art can communicate information, shape our everyday
+							lives, make a social statement and be enjoyed for
+							aesthetic beauty
 						</Typography>
 						<div className="flex justify-center gap-2">
 							<Button size="lg" color="white">

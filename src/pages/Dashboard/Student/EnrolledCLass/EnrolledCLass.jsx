@@ -11,6 +11,7 @@ import {
 	Typography,
 } from "@material-tailwind/react";
 
+
 const EnrolledCLass = () => {
 	const [axiosSecure] = useAxiosSecure();
 	const { user } = useAuth();
