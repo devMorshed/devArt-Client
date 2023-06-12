@@ -53,7 +53,12 @@ const Dashboard = () => {
 		{
 			id: 2,
 			to: "manageuser",
-			lable: "Manage",
+			lable: "Manage User",
+		},
+		{
+			id: 3,
+			to: "manageclass",
+			lable: "Manage Class",
 		},
 	];
 
