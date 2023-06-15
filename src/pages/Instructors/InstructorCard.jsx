@@ -6,8 +6,8 @@ import {
 const InstructorCard = ({ data }) => {
 	const { image, name, email, ratings } = data;
 	return (
-		<figure className="relative h-full w-full">
-			<img className="h-full w-full rounded" src={image} alt={name} />
+		<figure className="relative w-96 h-96">
+			<img className="h-full object-cover w-full rounded-md" src={image} alt={name} />
 
 			<div className="absolute top-2 right-5">
 				<Typography

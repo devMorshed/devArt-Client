@@ -28,15 +28,15 @@ export default function ClassCard({ data }) {
 		image,
 		name,
 		ratings,
-    instructor,
-    instructor_mail,
+		instructor,
+		instructor_mail,
 		price,
 		available_seats,
 		total_seats,
 		details,
-  } = data;
-  
-  console.log(data);
+	} = data;
+
+	console.log(data);
 
 	const selectClass = () => {
 		if (user) {
@@ -45,8 +45,8 @@ export default function ClassCard({ data }) {
 				image,
 				name,
 				price: parseFloat(price),
-        user_email: user.email,
-        instructor_mail,
+				user_email: user.email,
+				instructor_mail,
 				addedtime: new Date().getTime(),
 				status: "selected",
 			};
@@ -104,8 +104,10 @@ export default function ClassCard({ data }) {
 					className="font-medium my-2 tracking-wider">
 					{instructor}
 				</Typography>
-				<Typography>{details}</Typography>
-				<div className="flex justify-between mt-4">
+				<Typography>{details.slice(0,200)}</Typography>
+			</CardBody>
+			<CardFooter className="pt-2 mt-auto">
+				<div className="flex justify-between my-4">
 					<Typography>
 						{available_seats}
 						<span className="text-xs"> seats available</span>
@@ -116,8 +118,6 @@ export default function ClassCard({ data }) {
 						<span className="text-xs"> only.</span>
 					</Typography>
 				</div>
-			</CardBody>
-			<CardFooter className="pt-2">
 				<Button
 					onClick={selectClass}
 					disabled={
