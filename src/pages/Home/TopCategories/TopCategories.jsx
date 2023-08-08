@@ -45,11 +45,11 @@ const TopCategories = () => {
         heading={"Top Categories"}
         subheading={"Check out which categories are trending"}
       />
-      <div className="m-10 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+      <div className="m-10 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
         {categories.map(({ id, category }) => (
           <div key={id} className="bg-blue-gray-50 px-4 py-3 rounded flex items-center gap-3">
             <p className="text-xl text-blue-gray-600 font-bold">{id}.</p>
-            <p>{category}</p>
+            <p className="dark:text-gray-700">{category}</p>
           </div>
         ))}
       </div>
